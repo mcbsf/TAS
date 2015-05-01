@@ -9,18 +9,13 @@
 //	And add the evaluation "evaluation E1"
 //  And add the evaluation "evaluation E2"
 Given (~'^I am on Teaching Assistant Teacher's home page$') {
-	->
-	to TeacherHomePage
-	at TeacherHomePage
+	
+	to HomePage
+	at HomePage
 
-	UEvaluation.builder.createEvaluation()
-	UEvaluation.builder.setEvaluationTitle("evaluation E1")
-	def evaluation_E1 = UEvaluation.builder.getEvaluation()
-	Uevaluation.save(evaluation_E1)
-	UEvaluation.builder.createEvaluation()
-	UEvaluation.builder.setEvaluationTitle("evaluation E2")
-	def evaluation_E2 = UEvaluation.builder.getEvaluation()
-	Uevaluation.save(evaluation_E2)
+	UEvaluation.rippenEvaluation(title: "evaluation E1")
+	UEvaluation.rippenEvaluation(title: "evaluation E2")	
+	
 
 }
 
@@ -39,12 +34,12 @@ Then (~'^I should see the Visualization Page$'){
 When (~'^I search for "([^"]*)" on the Search field$'){
 	String title ->
 	at VisualizationPage
-	def l = UVisualizeEvaluation.search(title)
+	def l = page.search(title)
 }
 //	Then I should see all the evaluations that have the name writted
 Then(~'^I should see the all the evaluations that have the name writted$'){
 	at VisualizationPage
-	$('li').find(l)
+	assert $(#title) != null
 }
 
 /*
