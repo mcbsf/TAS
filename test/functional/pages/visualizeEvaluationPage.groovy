@@ -20,4 +20,3 @@ class VisualizeEvaluationPage extends Page {
         fillData("title", title)
         click("search")
     }
-}
