@@ -24,4 +24,3 @@ class UVisualizeEvaluation{
         questions = evaluation.question
         alternatives = evaluation.alternatives
     }
-}
